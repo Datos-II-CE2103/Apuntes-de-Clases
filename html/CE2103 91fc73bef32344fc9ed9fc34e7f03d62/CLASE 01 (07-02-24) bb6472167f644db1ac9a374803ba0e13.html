@@ -1,0 +1,682 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CLASE 01 (07-02-24)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bb647216-7f64-4db1-ac9a-374803ba0e13" class="page sans"><header><h1 class="page-title">CLASE 01 (07-02-24)</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><h1 id="b1ed6768-6c4b-41ff-a0a8-79904a116d02" class="">Administración de Memoria</h1><h2 id="13579770-2f17-43c0-b0b1-32b446b427fd" class="">Definición de sitema operativo:</h2><p id="74eab6f4-6841-486a-ac5d-694eca3d8766" class="">Capa de software que interactuá directamente con el hardware</p><p id="571c22db-bcfb-416d-80ed-56bbc65a451c" class=""><em>FUNCIONES</em></p><ul id="5be3d29a-772b-4174-a191-d3e54dbe1443" class="bulleted-list"><li style="list-style-type:disc">API para los developers</li></ul><ul id="8d26e6a0-7895-4e6c-91cc-4cd5614323fe" class="bulleted-list"><li style="list-style-type:disc">Administrar los recursos de la maquina</li></ul><p id="e58dccdf-707d-4dab-b8c6-d75e2ab5dc40" class="">
+</p><p id="169c57eb-a502-46a0-8aae-7b5c0635f25f" class="">POSIX: ESTANDAR DE IEEE PARA LOS APIS DEL SO</p><p id="0e02d8fc-da90-4e8a-b945-219dca4a170a" class="">ftpr=fopen(”archivo.txt”)</p><p id="a23ab905-2c22-42b0-8417-b65ae59ef24e" class="">
+</p><h2 id="10a459c6-1b15-4222-934d-c81f1aef2585" class="">Recursos administrados por el s.o</h2><ul id="58b344c9-7f68-4f77-aec6-4ea40eeeb62d" class="bulleted-list"><li style="list-style-type:disc">Procesos: Programas en ejecución con recursos asignados</li></ul><ul id="26191133-e4b4-483c-b9b6-f8b71cdf8226" class="bulleted-list"><li style="list-style-type:disc">Memoria Principal (heap y stack)</li></ul><ul id="739db937-43c6-468a-af33-d1e9792734d3" class="bulleted-list"><li style="list-style-type:disc">Archivos (discos)</li></ul><ul id="b99dfb61-b33f-4cea-ad03-763accf7dc0a" class="bulleted-list"><li style="list-style-type:disc">I/O (Teclado, mouse, red, todo lo que tenga que ver con entradas y salidad)</li></ul><h2 id="d4772c68-31cd-42fc-bcbb-c057c4f1ca0c" class="">DEF: Administración de memoria</h2><p id="0d49906d-ce31-4616-853f-b81a5a4eba78" class="">Tareas que realiza el so para distribuir la memoria principal entre los procesos. incluye gestion de ram y disco (memoria virtual)</p><h2 id="e93b9d45-8878-4b09-a424-5264d59b21c1" class="">Porqué se necesita?</h2><ul id="497b2e29-0fd1-46ec-8626-65ff4ac2fc70" class="bulleted-list"><li style="list-style-type:disc">Asignar/liberar meorian al inicio/fin de un proceso</li></ul><ul id="47aaeed9-1030-4b3d-afea-f393458aae2d" class="bulleted-list"><li style="list-style-type:disc">controlar la memoria asgnada a un proceso</li></ul><ul id="c542bab5-8960-4699-8cc8-1a9bc8809d39" class="bulleted-list"><li style="list-style-type:disc">minimizar la fragmentación</li></ul><ul id="5538f488-c6b6-41ac-b813-258895f25bde" class="bulleted-list"><li style="list-style-type:disc">mantener integridad de los datos</li></ul><h2 id="f12b0224-3702-42ec-96b5-00a9aae8713a" class="">Evoluicón de la administración de memoria</h2><p id="0de25beb-0bf3-4cc1-a3a2-9c17c1eee3cd" class="">Los sistemas operativos evolucionan y mejoran la administración de memoria.</p><p id="33ffd522-7cd1-4885-bb6e-d45ee377469a" class="">Por ejemplo:</p><ul id="ffc2cd60-0ed5-4175-a8b0-46b1cbe9db5e" class="bulleted-list"><li style="list-style-type:disc">Ejecutar barios programas “a la vez” con un solo cpu. El so “presta” el cpu por tiempo (QUANTA), cambia contexto y ejecuta otro programa.</li></ul><h2 id="1b8e18d9-51d6-4948-a008-f7cc9fa150ac" class="">1er enfoque: Ninguna abstracción</h2><ul id="8358219c-7a41-40de-9697-f9277a933b18" class="bulleted-list"><li style="list-style-type:disc">Acceso directo a la memoria principal/física sin ninguna abstracción. Direcciones de memoria generados en el tiempo de compilación o carga</li></ul><ul id="73fe166f-ac9d-4a0c-bad6-cc01eae44ef9" class="bulleted-list"><li style="list-style-type:disc">Inicialmente no permitía la multiprogramación </li></ul><p id="7d4e3bcf-a6f8-43d2-a0b8-d4ad04e92f5a" class="">
+</p><p id="f239ea0c-a463-408a-a75d-f2f64916c606" class="">(imagen de ram)</p><figure id="6528ec79-68aa-4c73-964a-a05dd95f72a0" class="image"><a href="CLASE%2001%20(07-02-24)%20bb6472167f644db1ac9a374803ba0e13/1000069526.jpg"><img style="width:1080px" src="CLASE%2001%20(07-02-24)%20bb6472167f644db1ac9a374803ba0e13/1000069526.jpg"/></a></figure><p id="1c7e8d6d-ea04-45ba-b8b2-c194aea01287" class="">
+</p><ul id="3cbb73a3-3663-4d20-8704-1f8d4707bff0" class="bulleted-list"><li style="list-style-type:disc">Posteriormente se logra multiprograma mediante <em>Static Recolection </em></li></ul><p id="afee8b4c-df3c-405a-b01e-5bc496729356" class="">Esto es: Al cargar el programa se ajustan las direcciones considerando la dirección inicial donde se carga</p><p id="f7251e97-7541-41fa-bd9d-b1c88f7d4316" class=""><div class="indented"><h3 id="ec843e0a-b932-46d4-9a64-b279afc5f1bb" class="">Apuntes adicionales:</h3></div></p><p id="05aaf5cb-f669-4162-819c-6a379f7b4808" class="">Explicar de que estamos hablando</p><p id="6594486a-97f2-4c43-97b6-b31845d94b5c" class="">OS: Es software que controla el hardware proporcionando una interfaz más sencilla y un control unificado.</p><p id="24439630-f82a-49b2-b388-1e85ac9bb808" class="">API: Aplication Programing Interface</p><p id="a40f660a-65fc-4606-8b48-6b786508517f" class="">API SO: Interfaz para acceder a los recursos del hardware</p><p id="621b168b-dd22-4c2a-8a05-6c1fc7dbfe44" class="">POSIX: Portable Operating System Interface for UNIX</p><p id="1e3497de-cdd7-4441-9bbd-11017325ab05" class="">De unix nación minix</p><p id="8da139e3-6a3e-4214-96e4-de510f54a5b6" class="">En todos lo recursos tenemos en componente de hardware y una abstracción.</p><p id="b6dafa6a-979d-4d1a-8000-442635d3a933" class="">La abstracción del cpu es un proceso. (VIDEO Threads vs procesos) </p><p id="be5f5145-130f-4480-97a0-beb1cccfd222" class="">RAM: Random Access Memory</p><p id="40b16390-87ed-4d08-9716-16b178ab5f19" class="">Buscan transparencia (algo que está pero no se ve)</p><p id="0d4dc3d1-0334-46af-9b54-e59cac1ac501" class="">Virtualización (es algo que se ve pero no existe)</p><p id="0cdad2a3-e204-45f2-aaae-5f9e712272c9" class="">*Se ve más detalle en el curso de OS</p><p id="4d545db5-7f92-4a91-9338-b725807e0cca" class="">Que la memoria sea aprovechada justamente, eficientemente. Lo esencial es la multiprogramación.</p><p id="276da197-30d9-41a5-8e62-71134e4c68b6" class="">La administración también toca la memoria virtual.</p><p id="fe0c228c-f79c-4959-b4fe-1562d50b4a63" class="">La fragmentación (que quedan espacios vacios pero no continuos)</p><p id="e2b9f507-29aa-488c-8eb0-a32b06ff96ba" class="">Integridad de los datos</p><p id="a7de7c05-ba6b-40df-b078-17f505b474e5" class="">
+</p><p id="37e75a10-ee84-425f-ab7f-c0e2f433b1f2" class="">RUN TO COMPLETION </p><p id="3f3e9025-149a-4938-b15d-58f581d91a86" class="">Multiprogramación: Como doy una falsa ilusión de que hay simultaniedad</p><p id="b77c3420-a26a-4f3a-b2f1-cf98ba0e52d2" class="">emplea el swap para usar el disco mientras la ram está llena</p><p id="d12ced54-987b-4b19-93e8-8ddb45a6eb84" class="">Multiprocesamiento: Simultaneo por multicore</p><p id="ab6b895f-7a29-4a7b-82ea-4d0ba84b84ef" class="">El acceso directo es una carcel en que solo se puede ejecutar en ciertas y mismas condiciones</p><p id="3fcf3358-cf79-4fa1-8720-6850078fb7d1" class="">
+</p><p id="e5393c6b-420a-4a28-888e-507f115ed34d" class="">STATIC RELOCATION: Cuando compilo no pongo direcciones, cuando cargo el programa se asignan y cambian las direcciones rapidamente antes que se ejecute.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

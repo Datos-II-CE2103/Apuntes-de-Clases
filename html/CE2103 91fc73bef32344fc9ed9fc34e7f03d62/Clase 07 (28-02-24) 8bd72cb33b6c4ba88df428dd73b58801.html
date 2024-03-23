@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Clase 07 (28-02-24)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8bd72cb3-3b6c-4ba8-8df4-28dd73b58801" class="page sans"><header><h1 class="page-title">Clase 07 (28-02-24)</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><h1 id="a0a94833-f9c4-4cf9-8523-406af98feaea" class=""><span style="border-bottom:0.05em solid"><strong>TEMA#2 Análisis de Algoritmos</strong></span></h1><h3 id="70f8ccda-a031-407b-885e-866089eaf373" class="">Definicion de algoritmo:</h3><ul id="f1b3329e-e216-4509-9a2f-ced18f8a9fd7" class="bulleted-list"><li style="list-style-type:disc">Conjunto de instrucciones finitas para resolver un problema</li></ul><ul id="deef5c1a-5af8-40cd-b124-df429a1d877e" class="bulleted-list"><li style="list-style-type:disc">Receta de cocina<ul id="077011cc-4323-4cc6-8825-e48378a8ace4" class="bulleted-list"><li style="list-style-type:circle">Input: Ingredientes</li></ul><ul id="87a330ca-62f5-42cd-b3b5-2cdd20931327" class="bulleted-list"><li style="list-style-type:circle">Output: Comida</li></ul><ul id="29a1493a-5d1a-4795-b00d-37f1da8b66a7" class="bulleted-list"><li style="list-style-type:circle">Instrucciones: Algoritmo</li></ul></li></ul><ul id="a97ae2e4-083b-4294-b0d5-c12fd1d4be7b" class="bulleted-list"><li style="list-style-type:disc">Caracteristicas:<ul id="c238a842-665f-423a-8939-e25160a8b22d" class="bulleted-list"><li style="list-style-type:circle">No son ambiguos: cada paso tiene un solo significado</li></ul><ul id="1b892480-fdeb-4c71-8148-577073dace36" class="bulleted-list"><li style="list-style-type:circle">Enteada bien definida: Debe ser clara t constante</li></ul><ul id="3071ee57-f94b-4f8a-ac71-f43bc2f2d1d9" class="bulleted-list"><li style="list-style-type:circle">Salida bien definida: debe indicar que tipo de output genera</li></ul><ul id="515b0a10-11e4-4ecb-a627-29e89131126f" class="bulleted-list"><li style="list-style-type:circle">Finitos: Terminan en un tiempo determinado</li></ul><ul id="72a2820a-55ab-4dc0-b3e7-febb31ae4d7a" class="bulleted-list"><li style="list-style-type:circle">Factibles: Pueden ser ejecutados con los recursos tecnológicos disponibles</li></ul><blockquote id="aebb9f27-3386-47a7-81ed-826e20cc54ed" class="block-color-blue_background"><strong>PROGRAMA VS ALGORITMO?</strong><br/>Un programa es la implementacion de un algoritmo en un lenguaje de programación<br/></blockquote></li></ul><h3 id="fcdbaed4-5269-45f5-b203-600a88ab7faf" class="">Representacion de un algoritmo </h3><ul id="05379f30-0c11-4829-98b9-4857e57168c8" class="bulleted-list"><li style="list-style-type:disc">Pseudocódigo</li></ul><ul id="d4a5daee-7bcd-4595-865a-6a543fd50333" class="bulleted-list"><li style="list-style-type:disc">Lenguaje natural</li></ul><ul id="78762ce2-0601-4ec7-9a3d-fc7d55cc4f91" class="bulleted-list"><li style="list-style-type:disc">Definicion Formal</li></ul><ul id="6b35c5c8-b36d-4566-a78e-c63e9e4a936e" class="bulleted-list"><li style="list-style-type:disc">Diagramas de flujo</li></ul><h3 id="41c05e9f-c1b4-4b09-a2ea-12ff9196bcbc" class="">Complejidad</h3><ul id="9c24b560-f8af-47a2-8761-9c75e706c0c7" class="bulleted-list"><li style="list-style-type:disc">Cantidad de recursos utilizados para resolver una tarea /tiempo/memoria/disco)</li></ul><ul id="bda88f3f-c75d-4c4b-8633-e127a986fe1c" class="bulleted-list"><li style="list-style-type:disc">Complejidad temporal en la más comun seguida por la complejidad espacial/memoria</li></ul><ul id="3a3b474a-98d9-4fe3-a67a-18c5f59c2a0a" class="bulleted-list"><li style="list-style-type:disc">Meta: Reducir tiempo y memoria</li></ul><ul id="fb2160ba-e028-4195-a056-9df1f54535fb" class="bulleted-list"><li style="list-style-type:disc">Time Complexity: <ul id="6edb5ffd-fee6-4520-891b-d00afa2fc4dc" class="bulleted-list"><li style="list-style-type:circle">Función del tiempo según el tamaño del input</li></ul><figure id="5a159f90-0b64-485e-9693-87d94251d695" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mi>n</mi><mi>p</mi><mi>u</mi><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mo>&gt;</mo><mi>t</mi><mi>i</mi><mi>e</mi><mi>m</mi><mi>p</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">f(input) -&gt;tiempo</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">in</span><span class="mord mathnormal">p</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span></span></span></span></span></div></figure><ul id="a57ad165-f7b8-4b52-88df-567d85f6e1dd" class="bulleted-list"><li style="list-style-type:circle">Tiempo se refiere a la cantidad de comparaciones a la cantidad de comparaciones, accesos a memoria, … operaciones elementales</li></ul></li></ul><ul id="185af15b-c974-401e-9b58-a7f57d94837f" class="bulleted-list"><li style="list-style-type:disc">Space Complexity: <em>f(input) → memoria usada</em></li></ul><blockquote id="c9ef2875-80a3-4b11-8929-3e9b5e4cc6d5" class="block-color-blue_background">La(s) estructura(s) de datos usadas en un algoritmo, tienen un efecto claro en la complejidad</blockquote><h2 id="f1f41bd1-8c95-425d-83b9-3610f5383b56" class=""><span style="border-bottom:0.05em solid">Analisis de algoritmos</span></h2><ul id="59e29b67-820d-4fe9-adcb-51cd81d6cbf2" class="bulleted-list"><li style="list-style-type:disc">Determinar tiempo y espacio requerido para ejecutar un algoritmo</li></ul><ul id="0a5a6326-80ba-48bc-9e12-352f0ae84df6" class="bulleted-list"><li style="list-style-type:disc">Porqué analizar algoritmos?<ul id="ff7cd824-54cf-47e2-8348-246caea104c6" class="bulleted-list"><li style="list-style-type:circle">Predecir comportamiento</li></ul><ul id="827e3a80-69b8-4a9e-81b7-73f3419bec9e" class="bulleted-list"><li style="list-style-type:circle">Comparar distintos algoritmos para el mismo propósito</li></ul><ul id="7a5296c7-5587-4321-a85f-28a21ad75218" class="bulleted-list"><li style="list-style-type:circle">Optimizar</li></ul><ul id="8e1a4a50-e29f-45e8-a5d9-901f7cc04ccc" class="bulleted-list"><li style="list-style-type:circle">Clasificar según complejidad</li></ul></li></ul><ul id="5ff4bcca-95cd-4beb-a914-39825f65a4d5" class="bulleted-list"><li style="list-style-type:disc">Tipos:<ul id="f03771cc-2ef5-4bcc-87a5-61dce7421668" class="bulleted-list"><li style="list-style-type:circle">Empírico</li></ul><ul id="1497d2f7-b140-4eff-88bb-e8434b13d6fc" class="bulleted-list"><li style="list-style-type:circle">Teórico</li></ul></li></ul><h2 id="a24c212d-850a-468c-97cd-3f3986e16764" class=""><span style="border-bottom:0.05em solid">Análisis empírico</span></h2><ul id="5a82023d-9a72-4b55-a877-78bb74a743b0" class="bulleted-list"><li style="list-style-type:disc">Ejecutar un programa para evaluar el desempeño real</li></ul><ul id="f838c8ca-741f-4bc1-8699-a4a476828dca" class="bulleted-list"><li style="list-style-type:disc">Conocido como BENCHMARK</li></ul><ul id="39cdcecd-9d84-421e-ba59-4361bff2a90e" class="bulleted-list"><li style="list-style-type:disc">Fácilmente de entender y calcular</li></ul><ul id="1e4ab596-962b-44fa-8ee4-459c4df6c05d" class="bulleted-list"><li style="list-style-type:disc">No es independiente del hardware</li></ul><ul id="85850533-1928-4ec1-a5bf-5091d80ff96a" class="bulleted-list"><li style="list-style-type:disc">Requiere ejecutar el programa</li></ul><ul id="cce9f031-376f-41a8-8714-6d45241f13f3" class="bulleted-list"><li style="list-style-type:disc">Muy utilizado en la practica junto con pruebas A/B para indetificar mejoras o regresiones</li></ul><ul id="9622e213-31a5-4200-8474-2acbd27fe510" class="bulleted-list"><li style="list-style-type:disc">Se usa un enfoque de percentiles<blockquote id="487207b5-f931-456d-bd13-891dd9fba970" class="">Percentil: Indica el % de valores que son inferiores a cierto valor<br/>P75, P95, P99<br/>Usar promedios puede ser engañoso<br/></blockquote></li></ul><p id="bf5ca68d-42d6-4ba1-8335-fd28e252457f" class="">Otra forma de análisis empirico es el “Pofiling”. Es una técnica de análisis dinámico para encontrar cuellos de botella o secciones de la app con mal rendimiento. Provee una vision completa: CPU, Rendering, caching …</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="35f337fc-f969-4308-8db5-4b97b0b88195" class="code"><code class="language-Plain Text">Ejemplo del profe haciendo un Profiling en microsoft edge
+	-	Dev tools
+	- Usamos como ejemplo la pagina CRHoy
+	- Performance, hace prubas cambiando opciones de hardware e internet virtualmente
+
+Ahora vemos el video:
+What happenswhen you type a URL into your browser? https://www.youtube.com/watch?v=AlkDbnbv7dk&amp;pp=ygUPYnl0ZWJ5dGVnbyBodHRw
+</code></pre><p id="6ae15c5c-6657-457a-a7e6-57c3c0ea53b3" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"><hr/><details open="" style="padding-top:1em"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Inline comments</summary><div class="indented"><div><p style="padding:0.2em"><b>Block text</b>: <mark class="highlight-yellow_background"><span style="border-bottom:0.05em solid">Análisis empírico</span></mark></p><ul class="toggle"><li><div><span class="user" style="padding:0.2em"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span><span><b>Alexander Montero Vargas</b> <time style="font-size:0.8em">Feb 28, 2024, 5:57 PM</time></span></span></div><div style="padding:0.2em">No perdura en el tiempo (al análisis de hoy va a ser irrelevante en el futuro)<br/>En las empresas sí hay ambientes de hardware controlados<br/>Hay que ejecutar el programa, y aveces es compicado probar programas ajenos<br/></div><div style="padding:0.3em"></div></li></ul></div><hr/></div><div class="indented"><div><p style="padding:0.2em"><b>Block text</b>: <mark class="highlight-yellow_background">A/B</mark></p><ul class="toggle"><li><div><span class="user" style="padding:0.2em"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span><span><b>Alexander Montero Vargas</b> <time style="font-size:0.8em">Feb 28, 2024, 6:02 PM</time></span></span></div><div style="padding:0.2em">Como en las pruebas médicas<br/><br/>En A/B existe un grupo de control y uno de pruebas<br/><br/>Hay que ser cuidadosos liberar un funcion a produccion<br/><br/>Si por ejemplo con un sitio web se añade una animacion hay que medir cuánto tarda, cuanto internet usa<br/><br/>Entonces se hace así:<br/>- Primera semana se prueba en un 5% de los usuarios y se compara este 5% con el resto que no está probando<br/>- Entonces para la proximas semanas se sigue liberando a más usuarios 10%, 20% … hasta llegar al 100% de los usuarios<br/><br/>Desde que termina la programación hasta que esté implementada en el 100% puede tardar varios meses<br/><br/>No hay que hacer cosas por hacerlas, hay que hacerlas para obtener un impacto beneficioso<br/><br/>Lo jodido es fragmentar a los usuarios a las pruebas, no solo las consultas<br/></div><div style="padding:0.3em"></div></li></ul></div><hr/></div><div class="indented"><div><p style="padding:0.2em"><b>Block text</b>: <mark class="highlight-yellow_background">percentiles</mark></p><ul class="toggle"><li><div><span class="user" style="padding:0.2em"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span><span><b>Alexander Montero Vargas</b> <time style="font-size:0.8em">Feb 28, 2024, 6:06 PM</time></span></span></div><div style="padding:0.2em">Porque usar promedios es engañoso<br/><br/>Puede haber usuarios que tenga más peso que otros en las pruebas y afecten los resultados<br/><br/>Normalmente se usa P95<br/><br/>Lo ideal es optimizar para esa población que se encuentra en P95, y el restante P5 no tiene tanto impacto, a menos que sean clientes muy importantes (grandes compañias por ejemplo)<br/></div><div style="padding:0.3em"></div></li></ul></div><hr/></div><div class="indented"><div><p style="padding:0.2em"><b>Block text</b>: <mark class="highlight-yellow_background">Pofiling</mark></p><ul class="toggle"><li><div><span class="user" style="padding:0.2em"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span><span><b>Alexander Montero Vargas</b> <time style="font-size:0.8em">Feb 28, 2024, 6:07 PM</time></span></span></div><div style="padding:0.2em">Hace analisis estadistico y da un reporte de en qué lugares del código hay cuellos de botella. VSCODE tiene una herramienta para esto<br/><br/>(Ejemplo del profe haciendo ejecucción de profiling usando google crhome)<br/></div><div style="padding:0.3em"></div></li></ul></div><hr/></div></details></span></body></html>
